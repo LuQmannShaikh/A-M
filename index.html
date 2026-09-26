@@ -76,14 +76,17 @@
     }
     
     /* ================= ASLI 3D VELVET PARDA ================= */
+        /* ================= ASLI 3D VELVET PARDA (REALISTIC CURTAIN) ================= */
     #gate-container {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9000;
-      display: flex; pointer-events: none; overflow: hidden;
+      display: flex; pointer-events: none; overflow: hidden; /* Side scroll rokne ke liye */
     }
     
     .door {
       width: 50%; height: 100%; position: relative; pointer-events: auto;
-      background-color: #021a0f;
+      background-color: #4a020f; /* Shahi Maroon Base */
+      
+      /* Kapde ki Salvatein (3D Fabric Folds Effect) */
       background-image: linear-gradient(
         to right,
         rgba(0,0,0,0.7) 0%,
@@ -93,17 +96,27 @@
         rgba(0,0,0,0.7) 80%,
         rgba(0,0,0,0.2) 100%
       );
-      background-size: 25% 100%;
+      background-size: 25% 100%; /* Har parde par 4 salvatein banayega */
+      
+      /* Parda sarkane ka smooth animation */
       transition: transform 2.5s ease-in-out, filter 2.5s ease;
       box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
       z-index: 2;
     }
 
+    /* Parde kahan jama honge (Anchor points) */
     #left-door { transform-origin: left top; border-right: 4px solid #C9A24B; }
     #right-door { transform-origin: right top; border-left: 4px solid #C9A24B; }
     
-    .door.open-left { transform: scaleX(0.15); filter: drop-shadow(15px 0 20px rgba(0,0,0,1)); }
-    .door.open-right { transform: scaleX(0.15); filter: drop-shadow(-15px 0 20px rgba(0,0,0,1)); }
+    /* ================= PARDA SARKANE KA EFFECT (SQUISH & SLIDE) ================= */
+    .door.open-left { 
+      transform: scaleX(0.15); /* Parda left mein jama ho jayega */
+      filter: drop-shadow(15px 0 20px rgba(0,0,0,1)); 
+    }
+    .door.open-right { 
+      transform: scaleX(0.15); /* Parda right mein jama ho jayega */
+      filter: drop-shadow(-15px 0 20px rgba(0,0,0,1)); 
+    }
 
     /* ================= PREMIUM GOLD MEDALLION ================= */
     #seal-btn {
@@ -117,26 +130,29 @@
       background: conic-gradient(from 0deg, #C9A24B, #FFF5D1, #8A6A1F, #C9A24B, #FFF5D1, #8A6A1F, #C9A24B);
       display: flex; justify-content: center; align-items: center;
       box-shadow: 0 0 40px rgba(201, 162, 75, 0.5), inset 0 0 20px rgba(138,106,31,0.9);
-      border: 6px solid #021a0f;
+      border: 6px solid #2a0005;
       animation: premiumGlow 2s infinite alternate;
       position: relative;
     }
     
     .seal-circle::before {
       content: ''; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px;
-      border-radius: 50%; border: 1px dashed rgba(2, 26, 15, 0.5);
+      border-radius: 50%; border: 1px dashed rgba(42, 0, 5, 0.5);
     }
     
     .seal-monogram {
       font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 800;
-      color: #021a0f; letter-spacing: 2px;
+      color: #2a0005; letter-spacing: 2px;
       text-shadow: 1px 1px 0px rgba(255,255,255,0.8), -1px -1px 0px rgba(138,106,31,0.5);
     }
 
+    /* ================= TAP TO OPEN TEXT FIX ================= */
     .seal-text {
       position: absolute; bottom: -45px;
       left: 50%; transform: translateX(-50%);
-      width: 250px; text-align: center; white-space: nowrap; 
+      width: 250px; /* Text ko jagah dene ke liye */
+      text-align: center;
+      white-space: nowrap; /* YEH LINE TEXT KO EK HI LINE MEIN RAKHEGI */
       font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
       color: #F3E5CF; letter-spacing: 5px; text-transform: uppercase;
       text-shadow: 0 2px 5px rgba(0,0,0,0.9);
